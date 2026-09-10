@@ -7,7 +7,7 @@ def lin_reg(x, y):
 
     for i in range(len(x)):
         xDeviation = x[i] - xMean
-        yDeviation = y[i] - yMean 
+        yDeviation = y[i] - yMean
         numenator += (xDeviation * yDeviation)
         xDeviations.append(xDeviation)
 

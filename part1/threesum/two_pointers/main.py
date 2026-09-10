@@ -1,6 +1,11 @@
 from part1.threesum.two_pointers.algorithm import threesum_pointers
 from part1.threesum.common.measure import measure, average
-from part1.threesum.common.plots import plot_runs, plot_average, plot_loglog_fit
+from part1.threesum.common.plots import (
+    plot_runs,
+    plot_average,
+    plot_loglog_fit,
+)
+
 
 SIZES = [500, 1000, 2000, 3000, 4000, 5000]
 

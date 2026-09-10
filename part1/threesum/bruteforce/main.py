@@ -1,6 +1,11 @@
 from part1.threesum.bruteforce.algorithm import threesum_brute_force
 from part1.threesum.common.measure import measure, average
-from part1.threesum.common.plots import plot_runs, plot_average, plot_loglog_fit
+from part1.threesum.common.plots import (
+    plot_runs,
+    plot_average,
+    plot_loglog_fit,
+)
+
 
 SIZES = [120, 200, 300, 400, 500, 600, 700]
 

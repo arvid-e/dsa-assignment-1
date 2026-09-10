@@ -30,7 +30,7 @@ def plot_runs(sizes, all_runs, title, filename):
 def plot_average(sizes, averages, title, filename):
     plt.figure()
     plt.plot(sizes, averages, marker='o', color='black',
-             label=f'Average of runs')
+             label='Average of runs')
     plt.xlabel('Input size (n)')
     plt.ylabel('Execution time (s)')
     plt.title(title)
