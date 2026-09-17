@@ -1,6 +1,5 @@
 def insertion_sort(lst):
     for i in range(1, len(lst)):
-        print(lst)
         current = lst[i]
 
         right = i

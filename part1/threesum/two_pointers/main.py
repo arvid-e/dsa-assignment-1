@@ -1,6 +1,6 @@
 from part1.threesum.two_pointers.algorithm import threesum_pointers
-from part1.threesum.common.measure import measure, average
-from part1.threesum.common.plots import (
+from common.measure import measure, average
+from common.plots import (
     plot_runs,
     plot_average,
     plot_loglog_fit,

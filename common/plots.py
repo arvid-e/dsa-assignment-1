@@ -3,9 +3,9 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-from part1.threesum.common.linear_regression import lin_reg
+from common.linear_regression import lin_reg
 
-FIGURES_DIR = Path(__file__).resolve().parents[2] / "figures"
+FIGURES_DIR = Path(__file__).resolve().parents[1] / "figures"
 
 
 def _save(filename):
@@ -38,6 +38,18 @@ def plot_average(sizes, averages, title, filename):
     _save(filename)
 
 
+def plot_average_comparison(sizes, averages_by_name, title, filename):
+    plt.figure()
+    for name, averages in averages_by_name.items():
+        plt.plot(sizes, averages, marker='o', label=name)
+
+    plt.xlabel('Input size (n)')
+    plt.ylabel('Execution time (s)')
+    plt.title(title)
+    plt.legend()
+    _save(filename)
+
+
 def plot_loglog_fit(sizes, averages, title, filename):
     log_sizes = [math.log(n) for n in sizes]
     log_times = [math.log(t) for t in averages]
@@ -55,3 +67,27 @@ def plot_loglog_fit(sizes, averages, title, filename):
     _save(filename)
 
     return k
+
+
+def plot_loglog_comparison(sizes, averages_by_name, title, filename):
+    log_sizes = [math.log(n) for n in sizes]
+    ks = {}
+
+    plt.figure()
+    for name, averages in averages_by_name.items():
+        log_times = [math.log(t) for t in averages]
+        m, k = lin_reg(log_sizes, log_times)
+        ks[name] = k
+
+        points = plt.plot(log_sizes, log_times, 'o')
+        color = points[0].get_color()
+        plt.plot(log_sizes, [m + k * lx for lx in log_sizes], '-',
+                 color=color, label=f'{name} (k={k:.3f})')
+
+    plt.xlabel('log(n)')
+    plt.ylabel('log(time)')
+    plt.title(title)
+    plt.legend()
+    _save(filename)
+
+    return ks

@@ -1,6 +1,9 @@
 import time
 
-from part1.threesum.common.random_list import create_random_list
+from common.random_list import create_random_list
+
+
+SIZES = [1000, 2000, 3000, 4000, 5000, 6000, 7000]
 
 
 def measure(algorithm, sizes, runs=3):

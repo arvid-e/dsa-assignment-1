@@ -1,6 +1,6 @@
 from part1.threesum.bruteforce.algorithm import threesum_brute_force
-from part1.threesum.common.measure import measure, average
-from part1.threesum.common.plots import (
+from common.measure import measure, average
+from common.plots import (
     plot_runs,
     plot_average,
     plot_loglog_fit,
