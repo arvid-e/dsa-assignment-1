@@ -5,10 +5,10 @@ def quick_sort(lst):
 
     pivot = len(lst) - 1
     left = -1
-    right = 0
 
     for right in range(pivot):
         if (lst[right] < lst[pivot]):
+            left += 1
             helper = lst[left]
             lst[left] = lst[right]
             lst[right] = helper
