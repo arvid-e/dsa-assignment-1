@@ -22,7 +22,3 @@ def insertion_sort(lst):
             right -= 1
 
     return lst
-
-
-lst = [4, 1, 2, 0, 5, 3]
-print(insertion_sort(lst))
