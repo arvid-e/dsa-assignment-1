@@ -1,4 +1,4 @@
-def threesum_brute_force(lst, sum=0):
+def threesum_brute(lst, sum=0):
     sums = set()
 
     for i in range(len(lst)):
