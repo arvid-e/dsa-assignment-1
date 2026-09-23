@@ -1,6 +1,6 @@
 def threesum_pointers(lst, sum=0):
     res = set()
-    lst.sort()
+    lst = sorted(lst)
 
     for i in range(len(lst) - 2):
         left = i + 1
@@ -18,4 +18,8 @@ def threesum_pointers(lst, sum=0):
                 right -= 1
                 left += 1
 
-    return res
+    triples = []
+    for t in res:
+        triples.append(t)
+
+    return triples
