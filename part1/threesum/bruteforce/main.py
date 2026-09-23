@@ -1,4 +1,4 @@
-from part1.threesum.bruteforce.algorithm import threesum_brute_force
+from part1.threesum.bruteforce.algorithm import threesum_brute
 from common.measure import measure, average
 from common.plots import (
     plot_runs,
@@ -7,11 +7,11 @@ from common.plots import (
 )
 
 
-SIZES = [120, 200, 300, 400, 500, 600, 700]
+SIZES = list(range(210, 701, 35))
 
 
 def run():
-    all_runs = measure(threesum_brute_force, SIZES)
+    all_runs = measure(threesum_brute, SIZES)
     averages = average(all_runs)
 
     plot_runs(SIZES, all_runs,

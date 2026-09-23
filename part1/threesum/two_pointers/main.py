@@ -6,8 +6,7 @@ from common.plots import (
     plot_loglog_fit,
 )
 
-
-SIZES = [500, 1000, 2000, 3000, 4000, 5000]
+SIZES = list(range(1400, 9101, 550))
 
 
 def run():
