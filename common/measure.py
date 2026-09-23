@@ -6,14 +6,14 @@ from common.random_list import create_random_list
 SIZES = [1000, 2000, 3000, 4000, 5000, 6000, 7000]
 
 
-def measure(algorithm, sizes, runs=3):
+def measure(algorithm, sizes, runs=3, create=create_random_list):
     all_runs = []
 
     for run in range(runs):
         measurements = []
 
         for size in sizes:
-            lst = create_random_list(size)
+            lst = create(size)
             start = time.perf_counter()
             algorithm(lst)
             end = time.perf_counter()

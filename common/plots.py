@@ -38,16 +38,21 @@ def plot_average(sizes, averages, title, filename):
     _save(filename)
 
 
-def plot_average_comparison(sizes, averages_by_name, title, filename):
+def plot_comparison(x_values, values_by_name, xlabel, title, filename):
     plt.figure()
-    for name, averages in averages_by_name.items():
-        plt.plot(sizes, averages, marker='o', label=name)
+    for name, values in values_by_name.items():
+        plt.plot(x_values, values, marker='o', label=name)
 
-    plt.xlabel('Input size (n)')
+    plt.xlabel(xlabel)
     plt.ylabel('Execution time (s)')
     plt.title(title)
     plt.legend()
     _save(filename)
+
+
+def plot_average_comparison(sizes, averages_by_name, title, filename):
+    plot_comparison(sizes, averages_by_name, 'Input size (n)',
+                    title, filename)
 
 
 def plot_loglog_fit(sizes, averages, title, filename):
