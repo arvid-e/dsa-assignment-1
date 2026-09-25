@@ -1,5 +1,10 @@
 from common.measure import average, measure
-from common.plots import plot_average_comparison, plot_loglog_comparison
+from common.plots import (
+    PART2_FIGURES_DIR,
+    plot_average_comparison,
+    plot_loglog_comparison,
+    use_figures_dir,
+)
 from part2.sorting_algorithms.merge_sort.algorithm import merge_sort
 from part2.sorting_algorithms.quick_sort.algorithm import quick_sort
 
@@ -13,6 +18,8 @@ ALGORITHMS = {
 
 
 def run():
+    use_figures_dir(PART2_FIGURES_DIR)
+
     averages_by_name = {}
 
     for name, algorithm in ALGORITHMS.items():
@@ -20,13 +27,14 @@ def run():
         averages_by_name[name] = average(measure(algorithm, SIZES))
 
     plot_average_comparison(SIZES, averages_by_name,
-                            'Average of 3 runs: merge sort vs quick sort',
-                            'merge_quick_comparison_averages.png')
+                            'Figure 4: Average of 3 runs: ' +
+                            'merge sort vs quick sort',
+                            'figure4_merge_quick_comparison.png')
 
     ks = plot_loglog_comparison(SIZES, averages_by_name,
-                                'Log-log plot with linear fit: ' +
+                                'Figure 4a: Log-log plot with linear fit: ' +
                                 'merge sort vs quick sort',
-                                'merge_quick_comparison_loglog.png')
+                                'figure4a_merge_quick_comparison.png')
 
     for name, k in ks.items():
         print(f"{name}: estimated exponent k = {k:.3f}")

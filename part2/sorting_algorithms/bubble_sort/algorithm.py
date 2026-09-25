@@ -13,8 +13,3 @@ def bubble_sort(lst):
                 swapped = True
 
     return copy
-
-
-copy = [2, 1, 4, 2, 1, 7, 6, 10]
-
-print(bubble_sort(copy))

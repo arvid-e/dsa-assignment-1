@@ -18,9 +18,3 @@ def selection_sort(lst):
         copy[smallestIndex] = helper
 
     return copy
-
-
-copy = [2, 1, 4, 3]
-print(selection_sort(copy))
-
-print(copy)

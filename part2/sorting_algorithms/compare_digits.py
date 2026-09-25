@@ -1,7 +1,11 @@
 import time
 
 from common.measure import average
-from common.plots import plot_comparison
+from common.plots import (
+    PART2_FIGURES_DIR,
+    plot_comparison,
+    use_figures_dir,
+)
 from common.random_list import create_random_positive_list
 from part2.sorting_algorithms.bucket_sort.algorithm import bucket_sort
 from part2.sorting_algorithms.radix_sort.algorithm import radix_sort_lsd
@@ -43,6 +47,8 @@ def measure_digits(algorithm, digits, runs=RUNS):
 
 
 def run():
+    use_figures_dir(PART2_FIGURES_DIR)
+
     averages_by_name = {}
 
     for name, algorithm in ALGORITHMS.items():
@@ -51,9 +57,9 @@ def run():
 
     plot_comparison(DIGITS, averages_by_name,
                     'Number of digits in the values',
-                    f'Average of {RUNS} runs at n = {SIZE}: '
+                    f'Figure 6: Average of {RUNS} runs at n = {SIZE}: '
                     'effect of the value range',
-                    'bucket_radix_digits.png')
+                    'figure6_bucket_radix_digits.png')
 
     for name, averages in averages_by_name.items():
         times = ', '.join(f"{t:.3f}s" for t in averages)

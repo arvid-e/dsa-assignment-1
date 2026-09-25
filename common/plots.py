@@ -5,11 +5,23 @@ import matplotlib.pyplot as plt
 
 from common.linear_regression import lin_reg
 
-FIGURES_DIR = Path(__file__).resolve().parents[1] / "figures"
+ROOT = Path(__file__).resolve().parents[1]
+
+PART1_FIGURES_DIR = ROOT / "part1" / "figures"
+
+PART2_FIGURES_DIR = ROOT / "part2" / "figures"
+
+FIGURES_DIR = ROOT / "figures"
+
+
+def use_figures_dir(path):
+    # Lets each part save its figures in its own folder
+    global FIGURES_DIR
+    FIGURES_DIR = Path(path)
 
 
 def _save(filename):
-    FIGURES_DIR.mkdir(exist_ok=True)
+    FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     path = FIGURES_DIR / filename
     plt.savefig(path)
     print(f"saved {path}")
@@ -96,3 +108,17 @@ def plot_loglog_comparison(sizes, averages_by_name, title, filename):
     _save(filename)
 
     return ks
+
+
+def plot_ratio(sizes, numerators, denominators, ylabel, title, filename):
+    ratios = [a / b for a, b in zip(numerators, denominators)]
+
+    plt.figure()
+    plt.plot(sizes, ratios, marker='o', color='black')
+    plt.ylim(bottom=0)
+    plt.xlabel('Input size (n)')
+    plt.ylabel(ylabel)
+    plt.title(title)
+    _save(filename)
+
+    return ratios
